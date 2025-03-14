@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
+        VStack(spacing: 10) {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
@@ -23,7 +23,7 @@ struct ContentView: View {
                 .controlSize(.large)
                 .tint(.indigo)
             
-            Link(destination: URL("https://apple.com")!) {
+            Link(destination: URL(filePath: "https://apple.com")!) {
                 HStack(spacing: 16) {
                     Image(systemName: "apple.logo")
                     Text("Apple Store")
@@ -38,9 +38,14 @@ struct ContentView: View {
                         .shadow(radius: 20)
                 )
             }
-            
-        }
-        .padding()
+            Text("Gradient")
+                .font((.system(size: 80)))
+                .fontWeight(.black)
+                .foregroundStyle(
+                    LinearGradient(colors: [.pink, .purple, .blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                )
+        }.padding()
+        
     }
 }
 
