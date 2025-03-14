@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1DCF35302D8452CF0012EC22 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1DCF352F2D8452CF0012EC22 /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		1DCF35072D84431C0012EC22 /* SwiftUIAsyncImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIAsyncImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DCF352F2D8452CF0012EC22 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +37,7 @@
 		1DCF34FE2D84431C0012EC22 = {
 			isa = PBXGroup;
 			children = (
+				1DCF352F2D8452CF0012EC22 /* README.md */,
 				1DCF35092D84431C0012EC22 /* SwiftUIAsyncImage */,
 				1DCF35082D84431C0012EC22 /* Products */,
 			);
@@ -109,6 +115,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DCF35302D8452CF0012EC22 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
