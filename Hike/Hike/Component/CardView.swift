@@ -8,9 +8,20 @@
 import SwiftUI
 
 struct CardView: View {
+    // MARK: - Properties
+    @State private var imageNumber: Int = 1
+    @State private var randomNumber: Int = 1
+    
+    // MARK: - Functions
+    func generateRandomNumber() {
+        while randomNumber == imageNumber {
+            randomNumber = Int.random(in: 1...5)
+        }
+        imageNumber = randomNumber
+        print("Random number generated: \(randomNumber)")
+    }
+    
     var body: some View {
-        // MARTK: - 1. Header
-        // MAR
         ZStack {
             CustomBackgroudView()
             VStack {
@@ -38,25 +49,32 @@ struct CardView: View {
                 .padding(.horizontal, 30)
 
                 ZStack {
-                    Circle()
-                        .fill(
-                            LinearGradient(
-                                colors: [Color("ColorIndigoMedium"),
-                                         Color("ColorSalmonLight")],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
-                        .frame(width: 256, height: 256)
-                    Image("image-1")
+                    CustomCircleView()  
+                    Image("image-\(imageNumber)")
                         .resizable()
                         .scaledToFit()
+                        .animation(.easeInOut(duration: 1), value: imageNumber)
                 }
-//                .padding()
+                Button {
+                    // Action generate a ramdom number
+                    generateRandomNumber()
+                } label: {
+                    Text("Explore more")
+                        .font(.title2)
+                        .fontWeight(.heavy)
+                        .foregroundStyle(LinearGradient(
+                            colors: [.customGreenLight,.customGreenMedium],
+                            startPoint: .top,
+                            endPoint: .bottom))
+                        .shadow(color: Color.black.opacity(0.25),
+                                radius: 0.25,
+                                x: 1, y: 2)
+                }
+                .buttonStyle(GradientButtonStyle())
             }
         }
         .padding(.vertical, 32)
-        .padding(.horizontal, 16)
+        .padding(.horizontal, 16)	
         
     }
 }
