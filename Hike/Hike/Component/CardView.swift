@@ -11,6 +11,8 @@ struct CardView: View {
     // MARK: - Properties
     @State private var imageNumber: Int = 1
     @State private var randomNumber: Int = 1
+    @State private var isShowingSheet: Bool = false
+    @State private var sheetContentHeight = CGFloat(0)
     
     // MARK: - Functions
     func generateRandomNumber() {
@@ -36,9 +38,20 @@ struct CardView: View {
                         Spacer()
                         Button {
                             print("button tapped")
+                            isShowingSheet.toggle()
                         } label: {
                             CustomButtonView()
                                 
+                        }
+                        //Esse aqui para quando é dinamico e nao tem lista no meio
+//                        .dynamicHeightSheet(isPresented: $isShowingSheet) {
+//                            SheetContent(itemCount: 4)
+//                                .presentationDragIndicator(.visible)
+//                        }
+                        .sheet(isPresented: $isShowingSheet) {
+                            SettingsView()
+                            .presentationDragIndicator(.visible)
+                            .presentationDetents([.medium])
                         }
                     }
                     Text ("Fun and enjoyable outdoor activity that involves walking in nature, often on trails or paths.")
@@ -76,6 +89,23 @@ struct CardView: View {
         .padding(.vertical, 32)
         .padding(.horizontal, 16)	
         
+    }
+}
+
+struct SheetContent: View {
+    @State var itemCount: Int
+    
+    var body: some View {
+        VStack {
+            ForEach(0..<itemCount, id: \.self) { index in
+                Text("Item: \(index + 1)")
+                    .padding()
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(8)
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding()
     }
 }
 
